@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		556CF8721B3F156600EAA7A4 /* MAVBrokerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF8711B3F156600EAA7A4 /* MAVBrokerTests.m */; };
+		556CF8751B3F164100EAA7A4 /* MAVBroker.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF8741B3F164100EAA7A4 /* MAVBroker.m */; };
+		556CF8761B3F164B00EAA7A4 /* MAVMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5EC31B1D06EC00802D4C /* MAVMoney.m */; };
+		556CF8771B3F164E00EAA7A4 /* MAVBroker.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF8741B3F164100EAA7A4 /* MAVBroker.m */; };
 		558F5E931B1CF39E00802D4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5E921B1CF39E00802D4C /* main.m */; };
 		558F5E961B1CF39E00802D4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5E951B1CF39E00802D4C /* AppDelegate.m */; };
 		558F5E991B1CF39E00802D4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5E981B1CF39E00802D4C /* ViewController.m */; };
@@ -29,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		556CF8711B3F156600EAA7A4 /* MAVBrokerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVBrokerTests.m; sourceTree = "<group>"; };
+		556CF8731B3F164100EAA7A4 /* MAVBroker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAVBroker.h; sourceTree = "<group>"; };
+		556CF8741B3F164100EAA7A4 /* MAVBroker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVBroker.m; sourceTree = "<group>"; };
 		558F5E8D1B1CF39E00802D4C /* wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		558F5E911B1CF39E00802D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		558F5E921B1CF39E00802D4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -65,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		556CF8701B3F153300EAA7A4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				558F5EC91B1D0B2C00802D4C /* MAVMoneyTests.m */,
+				556CF8711B3F156600EAA7A4 /* MAVBrokerTests.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		558F5E841B1CF39E00802D4C = {
 			isa = PBXGroup;
 			children = (
@@ -111,9 +127,9 @@
 		558F5EA91B1CF39E00802D4C /* walletTests */ = {
 			isa = PBXGroup;
 			children = (
+				556CF8701B3F153300EAA7A4 /* Models */,
 				558F5EAC1B1CF39E00802D4C /* walletTests.m */,
 				558F5EAA1B1CF39E00802D4C /* Supporting Files */,
-				558F5EC91B1D0B2C00802D4C /* MAVMoneyTests.m */,
 			);
 			path = walletTests;
 			sourceTree = "<group>";
@@ -131,6 +147,8 @@
 			children = (
 				558F5EC21B1D06EC00802D4C /* MAVMoney.h */,
 				558F5EC31B1D06EC00802D4C /* MAVMoney.m */,
+				556CF8731B3F164100EAA7A4 /* MAVBroker.h */,
+				556CF8741B3F164100EAA7A4 /* MAVBroker.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -239,6 +257,7 @@
 				558F5EC41B1D06EC00802D4C /* MAVMoney.m in Sources */,
 				558F5E961B1CF39E00802D4C /* AppDelegate.m in Sources */,
 				558F5E931B1CF39E00802D4C /* main.m in Sources */,
+				556CF8751B3F164100EAA7A4 /* MAVBroker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,8 +265,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				556CF8721B3F156600EAA7A4 /* MAVBrokerTests.m in Sources */,
+				556CF8761B3F164B00EAA7A4 /* MAVMoney.m in Sources */,
 				558F5EAD1B1CF39E00802D4C /* walletTests.m in Sources */,
 				558F5ECA1B1D0B2C00802D4C /* MAVMoneyTests.m in Sources */,
+				556CF8771B3F164E00EAA7A4 /* MAVBroker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +456,7 @@
 				558F5EB21B1CF39E00802D4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		558F5EB31B1CF39E00802D4C /* Build configuration list for PBXNativeTarget "walletTests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +465,7 @@
 				558F5EB51B1CF39E00802D4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -10,7 +10,7 @@
 
 @interface MAVMoney ()
 
-@property (nonatomic) NSUInteger amount;
+@property (nonatomic, strong) NSNumber *amount;
 
 @end
 
@@ -35,7 +35,7 @@
 -(id) initWithAmount: (NSUInteger) amount currency:(NSString *)currency{
     
     if (self=[super init]) {
-        _amount = amount;
+        _amount = @(amount);
         _currency = currency;
     }
     
@@ -43,15 +43,38 @@
 }
 
 -(MAVMoney *) times:(NSUInteger)multiplier {
-    return  [[MAVMoney alloc] initWithAmount:_amount * multiplier
+    return  [[MAVMoney alloc] initWithAmount:[self.amount integerValue] * multiplier
                                     currency:self.currency];
+}
+
+-(MAVMoney *) plus: (MAVMoney *) other {
+    
+    NSInteger totalAmount = [self.amount integerValue] + [other.amount integerValue];
+    MAVMoney *total = [[MAVMoney alloc] initWithAmount:totalAmount
+                                              currency:self.currency];
+    return total;
+}
+
+
+
+#pragma mark - Overwritten
+
+- (NSString *) description{
+    return [NSString stringWithFormat:@"<%@: %@ %@>", [self class], [self currency], [self amount]];
 }
 
 #pragma mark - Equality
 
--(BOOL) isEqual:(id)object {
-    
-    return [self amount] == [object amount];
+- (BOOL) isEqual:(id)object{
+    if ([[self currency] isEqual:[object currency]]) {
+        return [self amount] == [object amount];
+    }else{
+        return NO;
+    }
+}
+
+- (NSUInteger) hash{
+    return [self.amount integerValue];
 }
 
 @end

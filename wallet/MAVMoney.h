@@ -19,5 +19,6 @@
 
 -(MAVMoney *) times: (NSUInteger) multiplier;
 
+-(MAVMoney *) plus: (MAVMoney *) other;
 
 @end

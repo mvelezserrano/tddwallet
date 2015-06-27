@@ -27,7 +27,7 @@
     [super tearDown];
 }
 
--(void) testCurrency {
+-(void) testCurrencies {
     
     MAVMoney *dollars = [MAVMoney dollarWithAmount:1];
     XCTAssertEqualObjects(@"USD", [dollars currency]);
@@ -58,5 +58,78 @@
     
     XCTAssertNotEqualObjects(seven, five);
 }
+
+- (void) testDifferentCurrencies {
+    MAVMoney *euro = [MAVMoney euroWithAmount:1];
+    MAVMoney *dollar = [MAVMoney dollarWithAmount:1];
+    
+    XCTAssertNotEqualObjects(euro, dollar, @"Different currencies should not be equal");
+}
+
+- (void) testAmountStorage{
+    int amount = 5;
+    MAVMoney *euro = [MAVMoney euroWithAmount:amount];
+    MAVMoney *dollar = [MAVMoney dollarWithAmount:amount];
+    
+    // Eliminamos el warning que habia por acceder a un selector de la parte privada
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    XCTAssertEqual(amount, [[euro performSelector:@selector(amount)] integerValue], @"The value retrieved should be the same as the stored");
+    XCTAssertEqual(amount, [[dollar performSelector:@selector(amount)] integerValue], @"The value retrieved should be the same as the stored");
+#pragma clang diagnostic pop
+    
+}
+
+- (void) testSimpleAddition {
+    
+    MAVMoney *sum = [[MAVMoney dollarWithAmount:5] plus: [MAVMoney dollarWithAmount:5]];
+    XCTAssertEqualObjects(sum, [MAVMoney dollarWithAmount:10], @"$5 + $5 = $10");
+}
+
+- (void) testHash {
+    
+    MAVMoney *a = [MAVMoney euroWithAmount:2];
+    MAVMoney *b = [MAVMoney euroWithAmount:2];
+    XCTAssertEqual([a hash], [b hash], @"Equal objects mus have same hash");
+    
+    MAVMoney *c = [MAVMoney dollarWithAmount:2];
+    MAVMoney *d = [MAVMoney dollarWithAmount:2];
+    XCTAssertEqual([c hash], [d hash], @"Equal objects mus have same hash");
+}
+
+- (void) testThatHashIsAmount {
+    
+    MAVMoney *one = [MAVMoney dollarWithAmount:1];
+    XCTAssertEqual([one hash], 1, @"The hash must be the same as the amount");
+}
+
+- (void) testDescription {
+    
+    MAVMoney *one = [MAVMoney dollarWithAmount:1];
+    NSString *desc = @"<MAVMoney: USD 1>";
+    XCTAssertEqualObjects(desc, [one description], @"Desctription must match the template");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
