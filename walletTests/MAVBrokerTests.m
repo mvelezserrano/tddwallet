@@ -14,6 +14,9 @@
 
 @interface MAVBrokerTests : XCTestCase
 
+@property (strong, nonatomic) MAVBroker *emptyBroker;
+@property (strong, nonatomic) MAVMoney *oneDollar;
+
 @end
 
 @implementation MAVBrokerTests
@@ -21,19 +24,23 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    self.emptyBroker = [MAVBroker new];
+    self.oneDollar = [MAVMoney dollarWithAmount:1];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+    self.emptyBroker = nil;
+    self.oneDollar = nil;
 }
 
 - (void) testSimpleReduction {
     
-    MAVBroker *broker = [[MAVBroker alloc] init];
     MAVMoney *sum = [[MAVMoney dollarWithAmount:5] plus:[MAVMoney dollarWithAmount:5]];
     
-    MAVMoney *reduced = [broker reduce: sum toCurrency: @"USD"];
+    MAVMoney *reduced = [self.emptyBroker reduce: sum toCurrency: @"USD"];
     
     // Compruebo que cojo dólares y los convierto a dólares.
     XCTAssertEqualObjects(sum, reduced, @"Conversion to same currency shold be a NOP");
@@ -42,16 +49,26 @@
 // $10 == $5 2:1
 - (void) testReduction {
     
-    MAVBroker *broker = [MAVBroker new];
-    [broker addRate: 2 fromCurrency:@"USD" toCurrency:@"EUR"];
+    [self.emptyBroker addRate: 2 fromCurrency:@"EUR" toCurrency:@"USD"];
     
     MAVMoney *dollars = [MAVMoney dollarWithAmount:10];
     MAVMoney *euros = [MAVMoney euroWithAmount:5];
     
-    MAVMoney *converted = [broker reduce:dollars
-                              toCurrency:@"EUR"];
+    MAVMoney *converted = [self.emptyBroker reduce:dollars
+                                        toCurrency:@"EUR"];
     XCTAssertEqualObjects(converted, euros, @"$10 == $5 2:1");
 }
+
+-(void) testThatNoRateRaisesException {
+    
+    XCTAssertThrows([self.emptyBroker reduce:self.oneDollar toCurrency:@"EUR"], @"No rates should cause exception");
+}
+
+-(void) testThatNilConversionDoesNotChangeMoney {
+    
+    XCTAssertEqualObjects(self.oneDollar, [self.emptyBroker reduce:self.oneDollar toCurrency:@"USD"], @"A nil conversion should have no effect");
+}
+
 
 
 

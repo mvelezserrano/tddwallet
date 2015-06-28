@@ -7,18 +7,28 @@
 //
 
 #import <Foundation/Foundation.h>
+@class MAVMoney;
+@class MAVBroker;
 
-@interface MAVMoney : NSObject
+@protocol MAVMoney <NSObject>
 
-@property (copy, readonly) NSString *currency;
+-(id) initWithAmount: (NSInteger) amount
+            currency: (NSString *) currency;
 
-+(instancetype) dollarWithAmount: (NSUInteger) amount;
-+(instancetype) euroWithAmount: (NSUInteger) amount;
+-(id<MAVMoney>) times: (NSInteger) multiplier;
 
--(id) initWithAmount: (NSUInteger) amount currency: (NSString *) currency;
+-(id<MAVMoney>) plus: (MAVMoney *) money;
 
--(MAVMoney *) times: (NSUInteger) multiplier;
+-(id<MAVMoney>) reduceToCurrency:(NSString *) currency withBroker:(MAVBroker *) broker;
 
--(MAVMoney *) plus: (MAVMoney *) other;
+@end
+
+@interface MAVMoney : NSObject <MAVMoney>
+
+@property (nonatomic, readonly) NSString *currency;
+@property (nonatomic, strong, readonly) NSNumber *amount;
+
++(instancetype) dollarWithAmount: (NSInteger) amount;
++(instancetype) euroWithAmount: (NSInteger) amount;
 
 @end

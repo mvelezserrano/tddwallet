@@ -11,6 +11,9 @@
 		556CF8751B3F164100EAA7A4 /* MAVBroker.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF8741B3F164100EAA7A4 /* MAVBroker.m */; };
 		556CF8761B3F164B00EAA7A4 /* MAVMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5EC31B1D06EC00802D4C /* MAVMoney.m */; };
 		556CF8771B3F164E00EAA7A4 /* MAVBroker.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF8741B3F164100EAA7A4 /* MAVBroker.m */; };
+		556CF8791B3F2B2000EAA7A4 /* MAVWalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF8781B3F2B2000EAA7A4 /* MAVWalletTests.m */; };
+		556CF87C1B3F2F2E00EAA7A4 /* MAVWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF87B1B3F2F2E00EAA7A4 /* MAVWallet.m */; };
+		556CF87D1B3F30BC00EAA7A4 /* MAVWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF87B1B3F2F2E00EAA7A4 /* MAVWallet.m */; };
 		558F5E931B1CF39E00802D4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5E921B1CF39E00802D4C /* main.m */; };
 		558F5E961B1CF39E00802D4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5E951B1CF39E00802D4C /* AppDelegate.m */; };
 		558F5E991B1CF39E00802D4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5E981B1CF39E00802D4C /* ViewController.m */; };
@@ -36,6 +39,9 @@
 		556CF8711B3F156600EAA7A4 /* MAVBrokerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVBrokerTests.m; sourceTree = "<group>"; };
 		556CF8731B3F164100EAA7A4 /* MAVBroker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAVBroker.h; sourceTree = "<group>"; };
 		556CF8741B3F164100EAA7A4 /* MAVBroker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVBroker.m; sourceTree = "<group>"; };
+		556CF8781B3F2B2000EAA7A4 /* MAVWalletTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVWalletTests.m; sourceTree = "<group>"; };
+		556CF87A1B3F2F2E00EAA7A4 /* MAVWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAVWallet.h; sourceTree = "<group>"; };
+		556CF87B1B3F2F2E00EAA7A4 /* MAVWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVWallet.m; sourceTree = "<group>"; };
 		558F5E8D1B1CF39E00802D4C /* wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		558F5E911B1CF39E00802D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		558F5E921B1CF39E00802D4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -77,6 +83,7 @@
 			children = (
 				558F5EC91B1D0B2C00802D4C /* MAVMoneyTests.m */,
 				556CF8711B3F156600EAA7A4 /* MAVBrokerTests.m */,
+				556CF8781B3F2B2000EAA7A4 /* MAVWalletTests.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -149,6 +156,8 @@
 				558F5EC31B1D06EC00802D4C /* MAVMoney.m */,
 				556CF8731B3F164100EAA7A4 /* MAVBroker.h */,
 				556CF8741B3F164100EAA7A4 /* MAVBroker.m */,
+				556CF87A1B3F2F2E00EAA7A4 /* MAVWallet.h */,
+				556CF87B1B3F2F2E00EAA7A4 /* MAVWallet.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -256,6 +265,7 @@
 				558F5E991B1CF39E00802D4C /* ViewController.m in Sources */,
 				558F5EC41B1D06EC00802D4C /* MAVMoney.m in Sources */,
 				558F5E961B1CF39E00802D4C /* AppDelegate.m in Sources */,
+				556CF87C1B3F2F2E00EAA7A4 /* MAVWallet.m in Sources */,
 				558F5E931B1CF39E00802D4C /* main.m in Sources */,
 				556CF8751B3F164100EAA7A4 /* MAVBroker.m in Sources */,
 			);
@@ -268,6 +278,8 @@
 				556CF8721B3F156600EAA7A4 /* MAVBrokerTests.m in Sources */,
 				556CF8761B3F164B00EAA7A4 /* MAVMoney.m in Sources */,
 				558F5EAD1B1CF39E00802D4C /* walletTests.m in Sources */,
+				556CF87D1B3F30BC00EAA7A4 /* MAVWallet.m in Sources */,
+				556CF8791B3F2B2000EAA7A4 /* MAVWalletTests.m in Sources */,
 				558F5ECA1B1D0B2C00802D4C /* MAVMoneyTests.m in Sources */,
 				556CF8771B3F164E00EAA7A4 /* MAVBroker.m in Sources */,
 			);

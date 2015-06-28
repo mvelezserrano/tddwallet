@@ -11,8 +11,6 @@
 
 @interface MAVBroker ()
 
-@property (strong, nonatomic) NSMutableDictionary *rates;
-
 @end
 
 @implementation MAVBroker
@@ -24,9 +22,12 @@
     return self;
 }
 
--(MAVMoney *) reduce: (MAVMoney *) money toCurrency: (NSString *) currency {
+-(MAVMoney *) reduce: (id<MAVMoney>) money
+          toCurrency: (NSString *) currency {
     
-    return money;
+    // Double dispatch
+    return [money reduceToCurrency:currency
+                        withBroker:self];
 }
 
 -(void) addRate:(NSInteger) rate
@@ -34,6 +35,7 @@
      toCurrency:(NSString *) toCurrency {
     
     [self.rates setObject:@(rate) forKey:[self keyFromCurrency:fromCurrency toCurrency:toCurrency]];
+    [self.rates setObject:@(1.0/rate) forKey:[self keyFromCurrency:toCurrency toCurrency:fromCurrency]];
 }
 
 

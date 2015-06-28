@@ -7,6 +7,7 @@
 //
 
 #import "MAVMoney.h"
+#import "MAVBroker.h"
 
 @interface MAVMoney ()
 
@@ -16,7 +17,7 @@
 
 @implementation MAVMoney
 
-+(instancetype) dollarWithAmount: (NSUInteger) amount {
++(instancetype) dollarWithAmount: (NSInteger) amount {
     
     MAVMoney *dollar = [[MAVMoney alloc] initWithAmount:amount
                                                currency:@"USD"];
@@ -24,7 +25,7 @@
 }
 
 
-+(instancetype) euroWithAmount: (NSUInteger) amount {
++(instancetype) euroWithAmount: (NSInteger) amount {
     
     MAVMoney *euro = [[MAVMoney alloc] initWithAmount:amount
                                                currency:@"EUR"];
@@ -32,7 +33,7 @@
 }
 
 
--(id) initWithAmount: (NSUInteger) amount currency:(NSString *)currency{
+-(id) initWithAmount: (NSInteger) amount currency:(NSString *)currency{
     
     if (self=[super init]) {
         _amount = @(amount);
@@ -42,18 +43,48 @@
     return self;
 }
 
--(MAVMoney *) times:(NSUInteger)multiplier {
+-(id<MAVMoney>) times:(NSInteger)multiplier {
     return  [[MAVMoney alloc] initWithAmount:[self.amount integerValue] * multiplier
                                     currency:self.currency];
 }
 
--(MAVMoney *) plus: (MAVMoney *) other {
+-(id<MAVMoney>) plus: (MAVMoney *) money {
     
-    NSInteger totalAmount = [self.amount integerValue] + [other.amount integerValue];
+    NSInteger totalAmount = [self.amount integerValue] + [money.amount integerValue];
     MAVMoney *total = [[MAVMoney alloc] initWithAmount:totalAmount
                                               currency:self.currency];
     return total;
 }
+
+-(id<MAVMoney>) reduceToCurrency:(NSString *) currency withBroker:(MAVBroker *) broker {
+    
+    
+    
+    MAVMoney *result;
+    double rate = [[broker.rates objectForKey:[broker keyFromCurrency:self.currency
+                                                       toCurrency:currency]] doubleValue];
+    
+    // Comprobamos que divisa de origen y destino son las mismas
+    if ([self.currency isEqual:currency]) {
+        return result=self;
+    } else if (rate == 0) {
+        // No hay tasa de conversión, excepción que te crió
+        [NSException raise:@"NoConversionRateException"
+                    format:@"Must have a conversion from %@ to %@", self.currency, currency];
+    } else {
+        // Tenemos conversión
+        double rate = [[broker.rates objectForKey:[broker keyFromCurrency:self.currency
+                                                           toCurrency:currency]] doubleValue];
+        
+        NSInteger newAmount = [self.amount integerValue] * rate;
+        
+        result = [[MAVMoney alloc] initWithAmount:newAmount
+                                         currency:currency];
+    }
+    
+    return result;
+}
+
 
 
 
