@@ -16,7 +16,7 @@
 @property (readonly, nonatomic) NSMutableArray *currencies;
 
 - (NSInteger) numberOfMoneysForCurrencyInSection: (NSInteger) section;
-- (MAVMoney *) moneyForIndexPath:(NSIndexPath *) indexPath;
+- (MAVMoney *) moneyForIndexPath:(NSIndexPath *) indexPath broker:(MAVBroker *) broker;
 - (MAVMoney *) getSubtotalForCurrency:(NSString *) currency;
 
 @end

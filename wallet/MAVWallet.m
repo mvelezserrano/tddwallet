@@ -105,7 +105,7 @@
     return numberOfMoneys;
 }
 
-- (MAVMoney *) moneyForIndexPath:(NSIndexPath *) indexPath {
+- (MAVMoney *) moneyForIndexPath:(NSIndexPath *) indexPath broker:(MAVBroker *) broker {
     
     if (indexPath.section < self.currencies.count) {
         NSString *currency = [self.currencies objectAtIndex: indexPath.section];
@@ -123,8 +123,6 @@
             return [self getSubtotalForCurrency:currency];
         }
     } else {
-        MAVBroker *broker = [MAVBroker new];
-        [broker addRate: 2 fromCurrency: @"USD" toCurrency: @"EUR"];
         return [self reduceToCurrency:@"EUR" withBroker:broker];
     }
 }

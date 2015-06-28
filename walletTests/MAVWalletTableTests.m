@@ -15,6 +15,7 @@
 @interface MAVWalletTableTests : XCTestCase
 
 @property (strong, nonatomic) MAVWalletTableViewController *walletVC;
+@property (strong, nonatomic) MAVBroker *broker;
 @property (strong, nonatomic) MAVWallet *wallet;
 @property (strong, nonatomic) MAVMoney *dollar1;
 @property (strong, nonatomic) MAVMoney *dollar2;
@@ -44,7 +45,10 @@
     [self.wallet addMoney:self.euro1];
     [self.wallet addMoney:self.euro2];
     
-    self.walletVC = [[MAVWalletTableViewController alloc] initWithModel:self.wallet];
+    self.broker = [MAVBroker new];
+    [self.broker addRate: 2 fromCurrency: @"USD" toCurrency: @"EUR"];
+    
+    self.walletVC = [[MAVWalletTableViewController alloc] initWithModel:self.wallet broker:self.broker];
 }
 
 - (void)tearDown {
@@ -95,10 +99,10 @@
     NSIndexPath *ipEuro2 = [NSIndexPath indexPathForRow:1
                                               inSection:[self.wallet.currencies indexOfObject:self.euro1.currency]];
     
-    MAVMoney *dollar1FromIndexPath = [self.wallet moneyForIndexPath: ipDollar1];
-    MAVMoney *dollar2FromIndexPath = [self.wallet moneyForIndexPath: ipDollar2];
-    MAVMoney *euro1FromIndexPath = [self.wallet moneyForIndexPath: ipEuro1];
-    MAVMoney *euro2FromIndexPath = [self.wallet moneyForIndexPath: ipEuro2];
+    MAVMoney *dollar1FromIndexPath = [self.wallet moneyForIndexPath: ipDollar1 broker:self.broker];
+    MAVMoney *dollar2FromIndexPath = [self.wallet moneyForIndexPath: ipDollar2 broker:self.broker];
+    MAVMoney *euro1FromIndexPath = [self.wallet moneyForIndexPath: ipEuro1 broker:self.broker];
+    MAVMoney *euro2FromIndexPath = [self.wallet moneyForIndexPath: ipEuro2 broker:self.broker];
     
     XCTAssertEqualObjects(self.dollar1, dollar1FromIndexPath);
     XCTAssertEqualObjects(self.dollar2, dollar2FromIndexPath);
@@ -119,22 +123,20 @@
     
     NSIndexPath *ipSubtotalDollars = [NSIndexPath indexPathForRow:2
                                                         inSection:0];
-    MAVMoney *subtotalMoney = [self.wallet moneyForIndexPath:ipSubtotalDollars];
+    MAVMoney *subtotalMoney = [self.wallet moneyForIndexPath:ipSubtotalDollars broker:self.broker];
     
     XCTAssertEqualObjects(testSubtotalMoney, subtotalMoney);
 }
 
 -(void) testTotalInEuros {
     
-    MAVBroker *broker = [MAVBroker new];
-    [broker addRate: 2 fromCurrency: @"USD" toCurrency: @"EUR"];
     MAVMoney *totalFromMultipleCurrencies = [self.wallet reduceToCurrency:@"EUR"
-                                                               withBroker:broker];
+                                                               withBroker:self.broker];
     
     MAVMoney *dollar1ToEuros = [self.dollar1 reduceToCurrency:@"EUR"
-                                              withBroker:broker];
+                                              withBroker:self.broker];
     MAVMoney *dollar2ToEuros = [self.dollar2 reduceToCurrency:@"EUR"
-                                              withBroker:broker];
+                                              withBroker:self.broker];
     
     MAVWallet *eurosWallet = [[MAVWallet alloc] initWithAmount:1 currency:@"EUR"];
     [eurosWallet addMoney:self.euro2];
@@ -142,7 +144,7 @@
     [eurosWallet addMoney:dollar2ToEuros];
     
     MAVMoney *totalFromUniqueCurrency = [self.wallet reduceToCurrency:@"EUR"
-                                                           withBroker:broker];
+                                                           withBroker:self.broker];
     
     XCTAssertEqualObjects(totalFromMultipleCurrencies, totalFromUniqueCurrency);
 }
@@ -153,7 +155,7 @@
     
     NSIndexPath *ipTotalCurrencies = [NSIndexPath indexPathForRow:0
                                                         inSection:2];
-    MAVMoney *totalMoney = [self.wallet moneyForIndexPath:ipTotalCurrencies];
+    MAVMoney *totalMoney = [self.wallet moneyForIndexPath:ipTotalCurrencies broker:self.broker];
     
     XCTAssertEqualObjects(testTotalMoney, totalMoney);
 }

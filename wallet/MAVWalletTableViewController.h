@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 @class MAVWallet;
+@class MAVBroker;
 
 @interface MAVWalletTableViewController : UITableViewController
 
 @property (strong, nonatomic, readonly) MAVWallet *model;
 
--(id) initWithModel:(MAVWallet *) model;
+-(id) initWithModel:(MAVWallet *) model broker:(MAVBroker *) broker;
 
 @end

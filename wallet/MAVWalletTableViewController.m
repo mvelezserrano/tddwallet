@@ -8,19 +8,22 @@
 
 #import "MAVWalletTableViewController.h"
 #import "MAVWallet.h"
+#import "MAVBroker.h"
 
 @interface MAVWalletTableViewController ()
 
 @property (strong, nonatomic) MAVWallet *model;
+@property (nonatomic, strong) MAVBroker *broker;
 
 @end
 
 @implementation MAVWalletTableViewController
 
--(id) initWithModel:(MAVWallet *) model {
+-(id) initWithModel:(MAVWallet *) model broker: (MAVBroker *) broker {
     
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         _model = model;
+        _broker = broker;
     }
     
     return self;
@@ -54,7 +57,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (section < self.model.currencies.count) {
         NSIndexPath *ip = [NSIndexPath indexPathForRow:0 inSection:section];
-        MAVMoney *money = [self.model moneyForIndexPath:ip];
+        MAVMoney *money = [self.model moneyForIndexPath:ip broker:self.broker];
         return money.currency;
     }else{
         return @"TOTAL";
@@ -71,7 +74,7 @@
                                       reuseIdentifier:cellId];
     }
     
-    MAVMoney *money = [self.model moneyForIndexPath:indexPath];
+    MAVMoney *money = [self.model moneyForIndexPath:indexPath broker:self.broker];
     
     if (indexPath.row<[self.model numberOfMoneysForCurrencyInSection:indexPath.section]) {
         // Si estamos en una fila de Money...

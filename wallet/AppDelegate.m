@@ -34,7 +34,7 @@
     MAVBroker *broker = [[MAVBroker alloc] init];
     [broker addRate:2 fromCurrency:@"USD" toCurrency:@"EUR"];
     
-    MAVWalletTableViewController *walletVC = [[MAVWalletTableViewController alloc] initWithModel:wallet];
+    MAVWalletTableViewController *walletVC = [[MAVWalletTableViewController alloc] initWithModel:wallet broker:broker];
     
     self.window.rootViewController = walletVC;
     
