@@ -7,8 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "MAVMoney.h"
 
 @interface MAVWallet : NSObject <MAVMoney>
+
+@property (readonly, nonatomic) NSUInteger count;
+@property (readonly, nonatomic) NSMutableArray *currencies;
+
+- (NSInteger) numberOfMoneysForCurrencyInSection: (NSInteger) section;
+- (MAVMoney *) moneyForIndexPath:(NSIndexPath *) indexPath;
+- (MAVMoney *) getSubtotalForCurrency:(NSString *) currency;
 
 @end

@@ -59,7 +59,7 @@
     XCTAssertEqualObjects(substracted, [MAVMoney euroWithAmount:40], @"€60 - €20 = €40");
 }
 
-- (void) testThatRaisesExceptionWhenMoneyDoesNotExistsInWalletWhenSubstraction {
+- (void) testThatRaisesExceptionWhenMoneyDoesNotExistsInWalletWhenSubstractingIt {
     
     MAVWallet *wallet = [[MAVWallet alloc] initWithAmount: 40 currency: @"EUR"];
     [wallet addMoney:[MAVMoney euroWithAmount:20]];

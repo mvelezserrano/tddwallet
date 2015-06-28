@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "MAVBroker.h"
+#import "MAVWallet.h"
+#import "MAVMoney.h"
+#import "MAVWalletTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +21,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // Creamos una wallet y le añadimos moneys...
+    MAVWallet *wallet = [[MAVWallet alloc] initWithAmount:20 currency:@"USD"];
+    [wallet addMoney:[MAVMoney euroWithAmount:10]];
+    [wallet addMoney:[MAVMoney euroWithAmount:20]];
+    [wallet addMoney:[MAVMoney euroWithAmount:5]];
+    [wallet addMoney:[MAVMoney dollarWithAmount:5]];
+    
+    // Creamos un broker y añadimos el cambio USD a EUR
+    MAVBroker *broker = [[MAVBroker alloc] init];
+    [broker addRate:2 fromCurrency:@"USD" toCurrency:@"EUR"];
+    
+    MAVWalletTableViewController *walletVC = [[MAVWalletTableViewController alloc] initWithModel:wallet];
+    
+    self.window.rootViewController = walletVC;
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

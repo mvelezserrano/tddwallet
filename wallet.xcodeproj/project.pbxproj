@@ -14,13 +14,16 @@
 		556CF8791B3F2B2000EAA7A4 /* MAVWalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF8781B3F2B2000EAA7A4 /* MAVWalletTests.m */; };
 		556CF87C1B3F2F2E00EAA7A4 /* MAVWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF87B1B3F2F2E00EAA7A4 /* MAVWallet.m */; };
 		556CF87D1B3F30BC00EAA7A4 /* MAVWallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF87B1B3F2F2E00EAA7A4 /* MAVWallet.m */; };
+		556CF8821B4014A900EAA7A4 /* MAVWalletTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF8801B4014A900EAA7A4 /* MAVWalletTableViewController.m */; };
+		556CF8831B4014A900EAA7A4 /* MAVWalletTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 556CF8811B4014A900EAA7A4 /* MAVWalletTableViewController.xib */; };
+		556CF8851B4014DE00EAA7A4 /* MAVWalletTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF8801B4014A900EAA7A4 /* MAVWalletTableViewController.m */; };
+		556CF8871B4014F900EAA7A4 /* MAVWalletTableTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CF8861B4014F900EAA7A4 /* MAVWalletTableTests.m */; };
 		558F5E931B1CF39E00802D4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5E921B1CF39E00802D4C /* main.m */; };
 		558F5E961B1CF39E00802D4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5E951B1CF39E00802D4C /* AppDelegate.m */; };
 		558F5E991B1CF39E00802D4C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5E981B1CF39E00802D4C /* ViewController.m */; };
 		558F5E9C1B1CF39E00802D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 558F5E9A1B1CF39E00802D4C /* Main.storyboard */; };
 		558F5E9E1B1CF39E00802D4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 558F5E9D1B1CF39E00802D4C /* Images.xcassets */; };
 		558F5EA11B1CF39E00802D4C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 558F5E9F1B1CF39E00802D4C /* LaunchScreen.xib */; };
-		558F5EAD1B1CF39E00802D4C /* walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5EAC1B1CF39E00802D4C /* walletTests.m */; };
 		558F5EC41B1D06EC00802D4C /* MAVMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5EC31B1D06EC00802D4C /* MAVMoney.m */; };
 		558F5ECA1B1D0B2C00802D4C /* MAVMoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 558F5EC91B1D0B2C00802D4C /* MAVMoneyTests.m */; };
 /* End PBXBuildFile section */
@@ -42,6 +45,10 @@
 		556CF8781B3F2B2000EAA7A4 /* MAVWalletTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVWalletTests.m; sourceTree = "<group>"; };
 		556CF87A1B3F2F2E00EAA7A4 /* MAVWallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAVWallet.h; sourceTree = "<group>"; };
 		556CF87B1B3F2F2E00EAA7A4 /* MAVWallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVWallet.m; sourceTree = "<group>"; };
+		556CF87F1B4014A900EAA7A4 /* MAVWalletTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAVWalletTableViewController.h; sourceTree = "<group>"; };
+		556CF8801B4014A900EAA7A4 /* MAVWalletTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVWalletTableViewController.m; sourceTree = "<group>"; };
+		556CF8811B4014A900EAA7A4 /* MAVWalletTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAVWalletTableViewController.xib; sourceTree = "<group>"; };
+		556CF8861B4014F900EAA7A4 /* MAVWalletTableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVWalletTableTests.m; sourceTree = "<group>"; };
 		558F5E8D1B1CF39E00802D4C /* wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		558F5E911B1CF39E00802D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		558F5E921B1CF39E00802D4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -54,7 +61,6 @@
 		558F5EA01B1CF39E00802D4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		558F5EA61B1CF39E00802D4C /* walletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = walletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		558F5EAB1B1CF39E00802D4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		558F5EAC1B1CF39E00802D4C /* walletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = walletTests.m; sourceTree = "<group>"; };
 		558F5EC21B1D06EC00802D4C /* MAVMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAVMoney.h; sourceTree = "<group>"; };
 		558F5EC31B1D06EC00802D4C /* MAVMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVMoney.m; sourceTree = "<group>"; };
 		558F5EC91B1D0B2C00802D4C /* MAVMoneyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVMoneyTests.m; sourceTree = "<group>"; };
@@ -88,6 +94,24 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		556CF87E1B40148900EAA7A4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				556CF87F1B4014A900EAA7A4 /* MAVWalletTableViewController.h */,
+				556CF8801B4014A900EAA7A4 /* MAVWalletTableViewController.m */,
+				556CF8811B4014A900EAA7A4 /* MAVWalletTableViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		556CF8841B4014D400EAA7A4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				556CF8861B4014F900EAA7A4 /* MAVWalletTableTests.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		558F5E841B1CF39E00802D4C = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +133,7 @@
 		558F5E8F1B1CF39E00802D4C /* wallet */ = {
 			isa = PBXGroup;
 			children = (
+				556CF87E1B40148900EAA7A4 /* Controllers */,
 				558F5EB81B1CF65F00802D4C /* Models */,
 				558F5E941B1CF39E00802D4C /* AppDelegate.h */,
 				558F5E951B1CF39E00802D4C /* AppDelegate.m */,
@@ -134,8 +159,8 @@
 		558F5EA91B1CF39E00802D4C /* walletTests */ = {
 			isa = PBXGroup;
 			children = (
+				556CF8841B4014D400EAA7A4 /* Controllers */,
 				556CF8701B3F153300EAA7A4 /* Models */,
-				558F5EAC1B1CF39E00802D4C /* walletTests.m */,
 				558F5EAA1B1CF39E00802D4C /* Supporting Files */,
 			);
 			path = walletTests;
@@ -244,6 +269,7 @@
 			files = (
 				558F5E9C1B1CF39E00802D4C /* Main.storyboard in Resources */,
 				558F5EA11B1CF39E00802D4C /* LaunchScreen.xib in Resources */,
+				556CF8831B4014A900EAA7A4 /* MAVWalletTableViewController.xib in Resources */,
 				558F5E9E1B1CF39E00802D4C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +292,7 @@
 				558F5EC41B1D06EC00802D4C /* MAVMoney.m in Sources */,
 				558F5E961B1CF39E00802D4C /* AppDelegate.m in Sources */,
 				556CF87C1B3F2F2E00EAA7A4 /* MAVWallet.m in Sources */,
+				556CF8821B4014A900EAA7A4 /* MAVWalletTableViewController.m in Sources */,
 				558F5E931B1CF39E00802D4C /* main.m in Sources */,
 				556CF8751B3F164100EAA7A4 /* MAVBroker.m in Sources */,
 			);
@@ -275,11 +302,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				556CF8871B4014F900EAA7A4 /* MAVWalletTableTests.m in Sources */,
 				556CF8721B3F156600EAA7A4 /* MAVBrokerTests.m in Sources */,
 				556CF8761B3F164B00EAA7A4 /* MAVMoney.m in Sources */,
-				558F5EAD1B1CF39E00802D4C /* walletTests.m in Sources */,
 				556CF87D1B3F30BC00EAA7A4 /* MAVWallet.m in Sources */,
 				556CF8791B3F2B2000EAA7A4 /* MAVWalletTests.m in Sources */,
+				556CF8851B4014DE00EAA7A4 /* MAVWalletTableViewController.m in Sources */,
 				558F5ECA1B1D0B2C00802D4C /* MAVMoneyTests.m in Sources */,
 				556CF8771B3F164E00EAA7A4 /* MAVBroker.m in Sources */,
 			);
