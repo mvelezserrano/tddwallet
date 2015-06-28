@@ -30,9 +30,6 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
-//    self.wallet = [[MAVWallet alloc] initWithAmount:1 currency:@"USD"];
-//    [self.wallet addMoney:[MAVMoney euroWithAmount:1]];
-    
     // Creamos los moneys
     self.dollar1 = [MAVMoney dollarWithAmount:1];
     self.dollar2 = [MAVMoney dollarWithAmount:10];
@@ -104,17 +101,17 @@
     MAVMoney *euro1FromIndexPath = [self.wallet moneyForIndexPath: ipEuro1 broker:self.broker];
     MAVMoney *euro2FromIndexPath = [self.wallet moneyForIndexPath: ipEuro2 broker:self.broker];
     
-    XCTAssertEqualObjects(self.dollar1, dollar1FromIndexPath);
-    XCTAssertEqualObjects(self.dollar2, dollar2FromIndexPath);
-    XCTAssertEqualObjects(self.euro1, euro1FromIndexPath);
-    XCTAssertEqualObjects(self.euro2, euro2FromIndexPath);
+    XCTAssertEqualObjects(self.dollar1, dollar1FromIndexPath, @"Created Money has to be equal to Money at indexPath");
+    XCTAssertEqualObjects(self.dollar2, dollar2FromIndexPath, @"Created Money has to be equal to Money at indexPath");
+    XCTAssertEqualObjects(self.euro1, euro1FromIndexPath, @"Created Money has to be equal to Money at indexPath");
+    XCTAssertEqualObjects(self.euro2, euro2FromIndexPath, @"Created Money has to be equal to Money at indexPath");
     
 }
 
 -(void) testSubtotal {
     
-    XCTAssertEqualObjects([self.dollar1 addMoney:self.dollar2], [self.wallet getSubtotalForCurrency:@"USD"]);
-    XCTAssertEqualObjects([self.euro1 addMoney:self.euro2], [self.wallet getSubtotalForCurrency:@"EUR"]);
+    XCTAssertEqualObjects([self.dollar1 addMoney:self.dollar2], [self.wallet getSubtotalForCurrency:@"USD"], @"Sum of Dollars must be equal to subtotal for currency USD.");
+    XCTAssertEqualObjects([self.euro1 addMoney:self.euro2], [self.wallet getSubtotalForCurrency:@"EUR"], @"Sum of Euros must be equal to subtotal for currency EUR.");
 }
 
 -(void) testGetSubtotalCell {
@@ -125,7 +122,7 @@
                                                         inSection:0];
     MAVMoney *subtotalMoney = [self.wallet moneyForIndexPath:ipSubtotalDollars broker:self.broker];
     
-    XCTAssertEqualObjects(testSubtotalMoney, subtotalMoney);
+    XCTAssertEqualObjects(testSubtotalMoney, subtotalMoney, @"Subtotal from Currency must be equal to Subtotal row from table");
 }
 
 -(void) testTotalInEuros {
@@ -146,7 +143,7 @@
     MAVMoney *totalFromUniqueCurrency = [self.wallet reduceToCurrency:@"EUR"
                                                            withBroker:self.broker];
     
-    XCTAssertEqualObjects(totalFromMultipleCurrencies, totalFromUniqueCurrency);
+    XCTAssertEqualObjects(totalFromMultipleCurrencies, totalFromUniqueCurrency, @"Sum of Currencies must be equal to total for all currencies.");
 }
 
 -(void) testGetTotalCell {
@@ -157,22 +154,7 @@
                                                         inSection:2];
     MAVMoney *totalMoney = [self.wallet moneyForIndexPath:ipTotalCurrencies broker:self.broker];
     
-    XCTAssertEqualObjects(testTotalMoney, totalMoney);
+    XCTAssertEqualObjects(testTotalMoney, totalMoney, @"Total from Currency must be equal to Total row from table");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

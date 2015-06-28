@@ -71,7 +71,6 @@
     MAVMoney *euro = [MAVMoney euroWithAmount:amount];
     MAVMoney *dollar = [MAVMoney dollarWithAmount:amount];
     
-    // Eliminamos el warning que habia por acceder a un selector de la parte privada
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     XCTAssertEqual(amount, [[euro performSelector:@selector(amount)] integerValue], @"The value retrieved should be the same as the stored");
@@ -120,27 +119,5 @@
     NSString *desc = @"<MAVMoney: USD 1>";
     XCTAssertEqualObjects(desc, [one description], @"Desctription must match the template");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

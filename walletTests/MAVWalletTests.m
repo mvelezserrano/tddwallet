@@ -67,25 +67,4 @@
     XCTAssertThrows([wallet takeMoney: [MAVMoney euroWithAmount:10]], @"Substracting a non existing money should raise an exception");
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @end
