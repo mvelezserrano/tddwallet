@@ -82,8 +82,19 @@
 
 - (void) testSimpleAddition {
     
-    MAVMoney *sum = [[MAVMoney dollarWithAmount:5] plus: [MAVMoney dollarWithAmount:5]];
+    MAVMoney *sum = [[MAVMoney dollarWithAmount:5] addMoney: [MAVMoney dollarWithAmount:5]];
     XCTAssertEqualObjects(sum, [MAVMoney dollarWithAmount:10], @"$5 + $5 = $10");
+}
+
+- (void) testSimpleSubstraction {
+    
+    MAVMoney *sub = [[MAVMoney dollarWithAmount:10] takeMoney: [MAVMoney dollarWithAmount:5]];
+    XCTAssertEqualObjects(sub, [MAVMoney dollarWithAmount:5], @"$10 - $5 = $5");
+}
+
+- (void) testThatRaisesExceptionWhenAmountToSubstractIsBiggerThanExistingAmount {
+    
+    XCTAssertThrows([[MAVMoney dollarWithAmount:5] takeMoney:[MAVMoney dollarWithAmount:10]], @"Substract an amount bigger than the existing should raise an exception!");
 }
 
 - (void) testHash {

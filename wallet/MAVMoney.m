@@ -48,9 +48,22 @@
                                     currency:self.currency];
 }
 
--(id<MAVMoney>) plus: (MAVMoney *) money {
+-(id<MAVMoney>) addMoney: (MAVMoney *) money {
     
     NSInteger totalAmount = [self.amount integerValue] + [money.amount integerValue];
+    MAVMoney *total = [[MAVMoney alloc] initWithAmount:totalAmount
+                                              currency:self.currency];
+    return total;
+}
+
+-(id<MAVMoney>) takeMoney: (MAVMoney *) money {
+    
+    if ([money.amount integerValue]>[self.amount integerValue]) {
+        [NSException raise:@"AmountToSubstractBiggerThanExisting"
+                    format:@"Can't substract. %@ %@ is bigger than %@ %@", money.currency, money.amount, self.currency, self.amount];
+    }
+    
+    NSInteger totalAmount = [self.amount integerValue] - [money.amount integerValue];
     MAVMoney *total = [[MAVMoney alloc] initWithAmount:totalAmount
                                               currency:self.currency];
     return total;

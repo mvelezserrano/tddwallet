@@ -38,7 +38,7 @@
 
 - (void) testSimpleReduction {
     
-    MAVMoney *sum = [[MAVMoney dollarWithAmount:5] plus:[MAVMoney dollarWithAmount:5]];
+    MAVMoney *sum = [[MAVMoney dollarWithAmount:5] addMoney:[MAVMoney dollarWithAmount:5]];
     
     MAVMoney *reduced = [self.emptyBroker reduce: sum toCurrency: @"USD"];
     

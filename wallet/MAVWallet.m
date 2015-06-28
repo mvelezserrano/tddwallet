@@ -46,9 +46,22 @@
 }
 
 
--(id<MAVMoney>) plus: (MAVMoney *) money {
+-(id<MAVMoney>) addMoney: (MAVMoney *) money {
     
     [self.moneys addObject:money];
+    return self;
+}
+
+-(id<MAVMoney>) takeMoney: (MAVMoney *) money {
+    
+    if ([self.moneys containsObject:money]) {
+        [self.moneys removeObject:money];
+    } else {
+        [NSException raise:@"MoneyToSubstractNonExistingInWallet"
+                    format:@"Imposible to substract %@ %@. It does not exists in wallet", money.amount, money.currency];
+    }
+    
+    
     return self;
 }
 
@@ -56,7 +69,7 @@
     
     MAVMoney *result = [[MAVMoney alloc] initWithAmount:0 currency:currency];
     for (MAVMoney *each in self.moneys) {
-        result = [result plus: [each reduceToCurrency:currency
+        result = [result addMoney: [each reduceToCurrency:currency
                                            withBroker:broker]];
     }
     

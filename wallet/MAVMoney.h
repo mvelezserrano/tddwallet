@@ -17,7 +17,9 @@
 
 -(id<MAVMoney>) times: (NSInteger) multiplier;
 
--(id<MAVMoney>) plus: (MAVMoney *) money;
+-(id<MAVMoney>) addMoney: (MAVMoney *) money;
+
+-(id<MAVMoney>) takeMoney: (MAVMoney *) money;
 
 -(id<MAVMoney>) reduceToCurrency:(NSString *) currency withBroker:(MAVBroker *) broker;
 
